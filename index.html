@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مديرية التعليم العالي - موريتانيا | DESup</title>
+    <!-- تضمين Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* تخصيص بسيط للخطوط، استخدام خط يدعم العربية بشكل جيد */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f7f9fb; /* خلفية فاتحة */
+        }
+        /* لتحديد لون تحت العناوين (Primary Color: Green) */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #10b981; /* أخضر زمردي */
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-green': '#059669', /* أخضر عميق (للخلفيات والنصوص الرئيسية) */
+                        'secondary-yellow': '#facc15', /* أصفر ذهبي (للتأكيد والتمييز) */
+                        'accent-red': '#dc2626', /* أحمر قوي (للتنبيه والحدود) */
+                        'dark-bg': '#1f2937', /* خلفية داكنة (للفوتر/الهيدر) */
+                    },
+                }
+            }
+        }
+
+        // JavaScript بسيط للتنقل السلس وإظهار/إخفاء قائمة الجوال
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // التنقل السلس
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <!-- الهيدر (شريط التنقل) - الخلفية داكنة مع خط أخضر -->
+    <header class="bg-dark-bg text-white shadow-lg sticky top-0 z-50 border-t-4 border-primary-green">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- الشعار والاسم -->
+                <div class="flex-shrink-0 flex items-center">
+                    <!-- أيقونة بسيطة بلون ثانوي (الأصفر) -->
+                    <svg class="h-8 w-8 text-secondary-yellow ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a10 10 0 100 20 10 10 0 000-20zM12 14v4M12 6v2M16 12h4M4 12h4"/>
+                    </svg>
+                    <span class="text-2xl font-extrabold tracking-tight">مديرية التعليم العالي</span>
+                    <span class="hidden md:inline text-sm mr-4 opacity-75"> - الجمهورية الاسلامية الموريتانية</span>
+                </div>
+
+                <!-- قائمة التنقل للديسكتوب -->
+                <nav class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
+                        <a href="#home" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-green transition duration-300">الرئيسية</a>
+                        <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-green transition duration-300">حول المديرية</a>
+                        <a href="#structure" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-green transition duration-300">الهيكل الإداري</a>
+                        <a href="#control" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-green transition duration-300">الرقابة والجودة</a>
+                        <a href="#directory" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-green transition duration-300">دليل المؤسسات</a>
+                    </div>
+                </nav>
+
+                <!-- زر قائمة الجوال -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" type="button" class="bg-primary-green inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-primary-green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-bg focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">فتح القائمة الرئيسية</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- قائمة الجوال، مخفية افتراضياً -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-primary-green transition duration-300">الرئيسية</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-primary-green transition duration-300">حول المديرية</a>
+                <a href="#structure" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-primary-green transition duration-300">الهيكل الإداري</a>
+                <a href="#control" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-primary-green transition duration-300">الرقابة والجودة</a>
+                <a href="#directory" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-primary-green transition duration-300">دليل المؤسسات</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- قسم البانر الرئيسي (Hero Section) - الخلفية الخضراء -->
+        <section id="home" class="bg-primary-green text-white py-20 md:py-32 shadow-xl">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 text-secondary-yellow">مديرية التعليم العالي</h1>
+                <p class="text-xl md:text-2xl mb-8 font-light max-w-3xl mx-auto">
+                    إعداد عناصر السياسة الوطنية في مجال التعليم العالي والسهر على تطبيقها.
+                </p>
+                <p class="text-lg opacity-80 max-w-4xl mx-auto">
+                    مهمتنا: المساهمة في تنمية الأمة، تدريب وتطوير ونشر المعرفة في جميع مجالات العلم، وإتقان وتطوير العلوم والتقنيات والمهارات لخدمة التنمية المستدامة.
+                </p>
+            </div>
+        </section>
+
+        <!-- قسم حول المديرية والمهام -->
+        <section id="about" class="py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title text-3xl font-bold mb-10 text-primary-green">حول المديرية ومهامها</h2>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- الرؤية والرسالة - الحدود الخضراء -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-primary-green">
+                        <h3 class="text-2xl font-semibold mb-4 text-dark-bg">الرسالة والأهداف</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            تكلف مديرية التعليم العالي بإعداد عناصر السياسة الوطنية في مجال التعليم العالي والسهر على تطبيقها، لضمان استفادة الجميع من التقدم العلمي والمساهمة في تحسين وسائل الإنتاج.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed">
+                            يتم تنفيذ البرامج من خلال عقود برامج مع المؤسسات، مع السعي لتحقيق التلاؤم بين التكوين وحاجيات سوق العمل الموريتاني.
+                        </p>
+                    </div>
+
+                    <!-- المهام الأساسية (مستخرجة من الوثيقة المرفقة) - الحدود الصفراء -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-secondary-yellow">
+                        <h3 class="text-2xl font-semibold mb-4 text-dark-bg">المهام النوعية</h3>
+                        <ul class="space-y-3 text-gray-700 list-inside">
+                            <li class="flex items-start">
+                                <span class="text-primary-green text-xl ml-2">&#10003;</span>
+                                متابعة تنفيذ البرامج التعاقدية للمؤسسات العمومية الخاضعة للوصاية.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary-green text-xl ml-2">&#10003;</span>
+                                الإسهام في تحديد الشعب والتخصصات المستجيبة لمتطلبات التنمية الاقتصادية والاجتماعية.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary-green text-xl ml-2">&#10003;</span>
+                                السهر على تنفيذ سياسة القطاع فيما يتعلق بمعايير جودة برامج التكوين.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary-green text-xl ml-2">&#10003;</span>
+                                تداول المعلومة وتنسيق الإجراءات المتعلقة باكتتاب المدرسين الباحثين.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary-green text-xl ml-2">&#10003;</span>
+                                تولي سكريتارية المجلس الوطني للتعليم العالي والبحث العلمي.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الهيكل الإداري -->
+        <section id="structure" class="bg-gray-100 py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title text-3xl font-bold mb-12 text-primary-green text-center">الهيكل الإداري للمديرية</h2>
+                
+                <div class="max-w-4xl mx-auto">
+                    <!-- المدير -->
+                    <div class="text-center mb-10">
+                        <div class="inline-block bg-primary-green text-white p-4 rounded-full shadow-xl transform transition duration-500 hover:scale-105">
+                            <span class="text-xl font-bold">مدير مديرية التعليم العالي</span>
+                        </div>
+                    </div>
+
+                    <!-- المصالح الثلاث -->
+                    <div class="grid md:grid-cols-3 gap-8">
+                        
+                        <!-- 1. مصلحة الوصاية على المؤسسات -->
+                        <div class="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg transition duration-300 hover:shadow-2xl border-b-4 border-secondary-yellow">
+                            <h3 class="text-xl font-semibold mb-3 text-dark-bg">1. مصلحة الوصاية على المؤسسات</h3>
+                            <p class="text-sm text-gray-600 mb-4 text-center">تسيير العلاقات بين الوزارة والمؤسسات العمومية والخصوصية للتعليم العالي.</p>
+                            <div class="mt-2 text-center text-primary-green font-medium">
+                                <p class="border-t pt-2 border-gray-200">قسم المؤسسات العمومية</p>
+                                <p class="border-t pt-2 border-gray-200">قسم المؤسسات الخصوصية</p>
+                            </div>
+                        </div>
+
+                        <!-- 2. مصلحة النظم والمعايير التربوية -->
+                        <div class="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg transition duration-300 hover:shadow-2xl border-b-4 border-secondary-yellow">
+                            <h3 class="text-xl font-semibold mb-3 text-dark-bg">2. مصلحة النظم والمعايير التربوية</h3>
+                            <p class="text-sm text-gray-600 mb-4 text-center">السهر على احترام الضوابط التربوية وتطوير الأساليب والممارسات المبتكرة.</p>
+                            <div class="mt-2 text-center text-primary-green font-medium">
+                                <p class="border-t pt-2 border-gray-200">منح الشهادات والتقارير</p>
+                            </div>
+                        </div>
+
+                        <!-- 3. مصلحة سكرتارية المجلس الوطني -->
+                        <div class="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg transition duration-300 hover:shadow-2xl border-b-4 border-secondary-yellow">
+                            <h3 class="text-xl font-semibold mb-3 text-dark-bg">3. سكرتارية المجلس الوطني</h3>
+                            <p class="text-sm text-gray-600 mb-4 text-center">تولي سكريتارية المجلس الوطني للتعليم العالي والبحث العلمي.</p>
+                            <div class="mt-2 text-center text-primary-green font-medium">
+                                <p class="border-t pt-2 border-gray-200">تنسيق وتوثيق</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الرقابة والمتابعة على التعليم العالي الخاص -->
+        <section id="control" class="py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title text-3xl font-bold mb-4 text-primary-green">خطة المتابعة والرقابة لمؤسسات التعليم العالي الخاص</h2>
+                <p class="text-xl text-gray-600 mb-10">شعارنا: <span class="font-bold text-accent-red">المصداقية - الجاهزية - الفاعلية</span></p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- 1. الرقابة على التراخيص والاعتماد (لون أيقونة أخضر) -->
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-l-4 border-primary-green">
+                        <h3 class="text-xl font-bold mb-3 text-dark-bg flex items-center">
+                            <svg class="w-6 h-6 ml-2 text-primary-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.27a11.97 11.97 0 010 16.94l-2.94-2.94C15.414 14.929 14.414 15 13 15s-2.414-.071-3.67-1.33l-2.94 2.94a11.97 11.97 0 010-16.94 11.97 11.97 0 0116.94 0z"/></svg>
+                            التراخيص والاعتماد
+                        </h3>
+                        <ul class="text-gray-700 space-y-2 text-sm">
+                            <li>مراجعة سجلات تراخيص الإنشاء والفتح.</li>
+                            <li>متابعة جدول زمني لتجديد الاعتماد (4 سنوات لليسانس، 3 للماستر).</li>
+                            <li class="text-accent-red font-semibold">التنسيق مع AMAQ ES.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 2. الرقابة على الشهادات والإفادات (لون أيقونة أخضر) -->
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-l-4 border-primary-green">
+                        <h3 class="text-xl font-bold mb-3 text-dark-bg flex items-center">
+                            <svg class="w-6 h-6 ml-2 text-primary-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.832 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.168 18 16.5 18s-3.332.477-4.5 1.253"/></svg>
+                            الشهادات والإفادات
+                        </h3>
+                        <ul class="text-gray-700 space-y-2 text-sm">
+                            <li>مراجعة نماذج الشهادات الممنوحة.</li>
+                            <li>التأكد من وجود عبارة "مؤسسة خاصة" على الوثائق.</li>
+                            <li>التحقق من وجود أرقام وتواريخ الاعتماد على الشهادات.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 3. الرقابة على الجوانب الأكاديمية (هيئة التدريس) (لون أيقونة أخضر) -->
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-l-4 border-primary-green">
+                        <h3 class="text-xl font-bold mb-3 text-dark-bg flex items-center">
+                            <svg class="w-6 h-6 ml-2 text-primary-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20h-5.243m-2.5-3.356a4 4 0 110-2.288M7 10H3v8l5.5-5M15 4h.01M17 4h.01M19 4h.01M17 8h.01M17 12h.01"/></svg>
+                            هيئة التدريس
+                        </h3>
+                        <ul class="text-gray-700 space-y-2 text-sm">
+                            <li>مراجعة مؤهلات أعضاء هيئة التدريس.</li>
+                            <li class="text-accent-red font-semibold">التحقق من نسب الأساتذة الدائمين (10%) والمتعاقدين (15%).</li>
+                            <li>التأكد من موافقة الوزير على التعيينات الإدارية.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 4. الرقابة على البنية التحتية (لون أيقونة أخضر) -->
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-l-4 border-primary-green">
+                        <h3 class="text-xl font-bold mb-3 text-dark-bg flex items-center">
+                            <svg class="w-6 h-6 ml-2 text-primary-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 6h.01M15 6h.01M8 10h.01M16 10h.01M12 21V7"/></svg>
+                            البنية التحتية
+                        </h3>
+                        <ul class="text-gray-700 space-y-2 text-sm">
+                            <li>التفتيش على المباني والتجهيزات والمخططات المعمارية.</li>
+                            <li>مراقبة المرافق (القاعات، المختبرات، المكتبات).</li>
+                            <li>التحقق من شهادات المطابقة من الوزارات المختصة.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 5. الرقابة المالية والإدارية (لون أيقونة أخضر) -->
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-l-4 border-primary-green">
+                        <h3 class="text-xl font-bold mb-3 text-dark-bg flex items-center">
+                            <svg class="w-6 h-6 ml-2 text-primary-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                            المالية والإدارية
+                        </h3>
+                        <ul class="text-gray-700 space-y-2 text-sm">
+                            <li>مراجعة الوضعية القانونية والأنظمة الأساسية للشركات.</li>
+                            <li class="text-accent-red font-semibold">التأكد من وجود مساهمين موريتانيين في الشركات.</li>
+                            <li>مراقبة الإعلانات والتسويق والتحقق من دقة المعلومات المعلنة.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 6. التنسيق البرامجي (لون أيقونة أخضر) -->
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-l-4 border-primary-green">
+                        <h3 class="text-xl font-bold mb-3 text-dark-bg flex items-center">
+                            <svg class="w-6 h-6 ml-2 text-primary-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                            التنسيق البرامجي
+                        </h3>
+                        <ul class="text-gray-700 space-y-2 text-sm">
+                            <li>التنسيق مع برامج القطاع الأخرى: التوجيه، والبحث العلمي، والأعمال الجامعية.</li>
+                            <li>تطبيق المعايير الخاصة بالمساحات والتجهيزات في المرافق.</li>
+                            <li>متابعة تنفيذ التقارير الدورية للمؤسسات التعليم العالي.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم دليل مؤسسات التعليم العالي الخاص -->
+        <section id="directory" class="bg-gray-100 py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title text-3xl font-bold mb-10 text-primary-green text-center">دليل مؤسسات التعليم العالي الخاص</h2>
+                <p class="text-lg text-gray-600 mb-8 text-center">قائمة بعناوين واتصالات المؤسسات الخاصة لتمكين الطلاب والمهتمين من الوصول إليها.</p>
+
+                <div class="bg-white p-4 rounded-xl shadow-xl overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-200">
+                            <tr>
+                                <th class="px-6 py-3 text-right text-xs font-medium text-dark-bg uppercase tracking-wider">اسم المؤسسة</th>
+                                <th class="px-6 py-3 text-right text-xs font-medium text-dark-bg uppercase tracking-wider hidden sm:table-cell">البريد الإلكتروني</th>
+                                <th class="px-6 py-3 text-right text-xs font-medium text-dark-bg uppercase tracking-wider">هواتف الاتصال</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <!-- البيانات مستخرجة من ملف "عناوين مؤسسات التعليم العالي الخاص.docx" -->
+                            <tr class="hover:bg-green-50 transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-dark-bg">الجامعة اللبنانية</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 hidden sm:table-cell">Info@liu.mr, Brahim.didi@liu.mr</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">33222211 - 45251888</td>
+                            </tr>
+                            <tr class="hover:bg-green-50 transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-dark-bg">جامعة سيب منجمت</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 hidden sm:table-cell">Supmgt.mauritanie@yahoo.fr, Achamedradhy@gmail.com</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">43434849 - 33483333</td>
+                            </tr>
+                            <tr class="hover:bg-green-50 transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-dark-bg">جامعة محمد الأمين الشنقيطي</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 hidden sm:table-cell">Daydahd@gmail.com</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">44330362 - 48030641</td>
+                            </tr>
+                            <tr class="hover:bg-green-50 transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-dark-bg">جامعة شنقيط العصرية</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 hidden sm:table-cell">medalimdi@gmail.com</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">36642246 - 22011169</td>
+                            </tr>
+                            <tr class="hover:bg-green-50 transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-dark-bg">معهد جي الأكاديمي</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 hidden sm:table-cell">geulacademie@hotmail.fr</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">36358405</td>
+                            </tr>
+                            <tr class="hover:bg-green-50 transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-dark-bg">المدرسة الدولية المهنية</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 hidden sm:table-cell">b.youssorfba@gmail.com</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">46405316</td>
+                            </tr>
+                            <tr class="hover:bg-green-50 transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-dark-bg">المدرسة الدولية للأعمال</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 hidden sm:table-cell">غير متوفر</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">44722828 - 49965353</td>
+                            </tr>
+                            <tr class="hover:bg-green-50 transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-dark-bg">ISI kominik</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 hidden sm:table-cell">IzIkomikomunik@groupeisi.com</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">غير متوفر</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- الفوتر (تذييل الصفحة) - الخلفية الداكنة مع تمييز أصفر -->
+    <footer class="bg-dark-bg text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 text-sm">
+                
+                <!-- معلومات الاتصال -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-secondary-yellow">للتواصل معنا</h4>
+                    <p class="mb-2">وزارة التعليم العالي والبحث العلمي</p>
+                    <p class="mb-2">مديرية التعليم العالي - موريتانيا</p>
+                    <p class="mb-2">البريد: [بريد المديرية الرسمي]</p>
+                    <p>الهاتف: [هاتف المديرية]</p>
+                </div>
+
+                <!-- روابط سريعة -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-secondary-yellow">روابط هامة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-primary-green transition duration-300">المهام الأساسية</a></li>
+                        <li><a href="#control" class="hover:text-primary-green transition duration-300">خطة المتابعة والرقابة</a></li>
+                        <li><a href="#directory" class="hover:text-primary-green transition duration-300">دليل المؤسسات الخاصة</a></li>
+                        <li><a href="[رابط الوزارة الرسمي]" class="hover:text-primary-green transition duration-300" target="_blank">الموقع الرسمي للوزارة</a></li>
+                    </ul>
+                </div>
+
+                <!-- نبذة عن البرنامج -->
+                <div class="md:col-span-1">
+                    <h4 class="text-lg font-bold mb-4 text-secondary-yellow">عن برنامج التعليم العالي</h4>
+                    <p class="text-gray-400">
+                        يهدف برنامج التعليم العالي إلى تخطيط وتنظيم وتطوير العرض التعليمي وفقاً للاحتياجات الاقتصادية والاجتماعية والثقافية للبلد، ويعمل في انسجام تام مع برامج التوجيه والبحث العلمي.
+                    </p>
+                </div>
+
+            </div>
+            
+            <!-- حقوق النشر -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-xs text-gray-500">
+                &copy; 2024 مديرية التعليم العالي - جميع الحقوق محفوظة.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
